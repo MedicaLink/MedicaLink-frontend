@@ -2,7 +2,6 @@ import './Profile.css';
 import './ProfileOverview.css';
 import { ChevronDown, Virus2, Clipboard2Pulse } from 'react-bootstrap-icons';
 import Chiranga from '../../../assets/img/patients/Chiranga.jpg';
-import advertisement from '../../../assets/img/profie/ad-image.png';
 import { Outlet, NavLink } from 'react-router-dom';
 
 export function MedicalRecords() {
@@ -447,23 +446,6 @@ export function ProfileOverview() {
                         <Outlet />
 
                     </div>
-                </div>
-
-                <div className="ad-container my-4 py-2 px-4 section-blur">
-
-                    <div className="ad-text">
-                        <h5 className="fw-bold">Get MedicaLink on your mobile phone</h5>
-                        <p className="mb-0 d-none d-md-block">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic libero dolorum deleniti
-                            fugiat?
-                            Quibusdam ex recusandae quasi eos earum placeat eum doloribus adipisci quo consequuntur!
-                        </p>
-                        <button className="btn btn-primary mt-3 mt-md-4">Buy From Playstore <i
-                            className="bi bi-google-play ms-2"></i>
-                        </button>
-                    </div>
-
-                    <img src={advertisement} alt="advertisement" />
                 </div>
             </div>
         </>

@@ -19,38 +19,3 @@
 }
 
 /* Profile Navigation Section End */
-
-/*===== Advertisement Section =====*/
-.ad-container{
-    background: url(../../../assets/img/profie/ad-bg.jpg);
-    background-size: cover;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.ad-container .ad-text{
-    width: 60%;
-    color: #000000;
-}
-
-.ad-container img{
-    height: 200px;
-}
-
-@media (min-width:768px) {
-    .ad-container{
-        justify-content: space-around;
-    }
-
-    .ad-container .ad-text{
-        width: 60%;
-    }
-
-    .ad-container img{
-        height: 300px;
-    }
-    
-}
-/*===== Advertisement Section End =====*/
