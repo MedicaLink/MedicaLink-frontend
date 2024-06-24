@@ -1,5 +1,6 @@
 import { ClipboardPulse, Virus2 } from 'react-bootstrap-icons';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet} from 'react-router-dom';
+// import { NavLink, Outlet, useParams } from 'react-router-dom';
 import Searchbar, { FilterCategory, FilterGroup, FilterList, FilterTitle, SearchFilter } from '../../search/Searchbar';
 import { usePopup } from '../../popup/Popup';
 import { VaccinationForm } from './VaccinationForm';
@@ -20,6 +21,11 @@ interface MedicalRecord {
     type: string;
     location: string;
     date: string;
+}
+
+interface AllergyRecord {
+    id: number;
+    type: string;
 }
 
 export function MedicalRecordsTable() {
@@ -206,8 +212,107 @@ export function VaccinationTable() {
     );
 }
 
+
+export function AllergyReactionsTable() {
+    const { openPopup } = usePopup();
+
+    const allergy: AllergyRecord[] = [
+        { id: 1, type: 'Drug Allergies'},
+        { id: 2, type: 'Food Allergies'},
+        { id: 3, type: 'Plaster Allergies'},
+        { id: 4, type: 'BCG'}
+    ];
+
+    const handleClick = () => {
+        openPopup(<VaccinationForm/>);
+    }
+
+    return (
+        <>
+
+            <div className="d-flex align-items-center" id="result-titles">
+                <h5 className="mb-0">Allergies & Reactions</h5>
+                <div className="ms-auto d-flex align-items-center">
+                    <span className="me-2 me-md-3 text-nowrap">Showing <span className="result-count">10</span> results</span>
+                    <button className="add-btn">
+                        <span className="me-2 d-none d-md-block">Add Note</span>
+                        <span className="material-symbols-outlined">
+                            note_add
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div className="table-container mt-2 py-2 px-md-4">
+                <table className="table mt-md-2 mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" className="d-none d-lg-table-cell">#</th>
+                            <th scope="col">Allergy Type</th>
+                            <th scope="col" className="d-none d-md-table-cell"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Date</th>
+                            <th scope="col" className="d-none d-md-table-cell">Dose</th>
+                            <th scope="col" className="d-none d-lg-table-cell"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {
+                            allergy.map((allergies: AllergyRecord) => {
+                                return (
+                                    <tr key={allergies.id}>
+                                        <th scope="row" className="d-none d-lg-table-cell">22 : 25</th>
+                                        <td>{allergies.type}</td>
+                                        <td className="d-none d-md-table-cell">{allergies.brand}</td>
+                                        <td>{allergies.location}</td>
+                                        <td>{allergies.date}</td>
+                                        <td className="d-none d-md-table-cell">{allergies.dose}</td>
+                                        <td className="d-none d-lg-table-cell">
+                                            <div className="d-none d-lg-flex justify-content-end align-items-center">
+                                                <button className="view-more" onClick={handleClick}>
+                                                    <span className="material-symbols-outlined">
+                                                        read_more
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div className="result-nav my-4" id="result-navigation">
+                <button>
+                    <span className="material-symbols-outlined">
+                        chevron_left
+                    </span>
+                </button>
+                <div className="numbers">
+                    <div className="active">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                </div>
+                <button>
+                    <span className="material-symbols-outlined">
+                        chevron_right
+                    </span>
+                </button>
+            </div>
+
+        </>
+    );
+}
+
+
+
+
+
 function ProfileReports() {
-    const { patientId } = useParams(); //Use this for all the backend requests
+    // const { patientId } = useParams(); //Use this for all the backend requests
 
     return (
         <>
@@ -260,6 +365,10 @@ function ProfileReports() {
                             </NavLink>
                             <NavLink to="medicals" className="me-2 px-3 py-2 d-flex align-items-center">
                                 <span className="d-none d-md-inline">Medical Reports</span>
+                                <ClipboardPulse className='ms-3' size={18}/>
+                            </NavLink>
+                            <NavLink to="allergies" className="me-2 px-3 py-2 d-flex align-items-center">
+                                <span className="d-none d-md-inline">Allergies & Reactions</span>
                                 <ClipboardPulse className='ms-3' size={18}/>
                             </NavLink>
                         </div>

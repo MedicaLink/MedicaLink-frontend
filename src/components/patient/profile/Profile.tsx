@@ -1,7 +1,7 @@
 import './Profile.css';
 import './ProfileOverview.css';
 import { ChevronDown, Virus2, Clipboard2Pulse } from 'react-bootstrap-icons';
-import Chiranga from '../../../assets/img/patients/Chiranga.jpg';
+import patient from '../../../assets/img/patients/patient.png';
 import { Outlet, NavLink } from 'react-router-dom';
 
 export function MedicalRecords() {
@@ -35,6 +35,38 @@ export function MedicalRecords() {
                                 </div>
                                 <div>MRI Scan</div>
                                 <div className="d-none d-md-block">Heymas Hospitals</div>
+                                <div className="d-none d-md-block">Dr. Suresh</div>
+                                <div >12/06/2003</div>
+                                <div>
+                                    <button type="button" className="p-0 border-0 bg-transparent"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse1"
+                                        aria-expanded="false" aria-controls="collapse1">
+                                        <ChevronDown />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="notes px-3 py-2 collapse" id="collapse1">
+                                <h6 className="mt-2">Notes : </h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Dignissimos dicta, cumque deleniti consequatur fugiat asperiores qui
+                                    sit
+                                    animi beatae ab?
+                                    <a href="https://googledrive.com">Download Attachment</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="vtr">
+                            <div className="tr">
+                                <div className="d-flex">
+                                    <input type="checkbox" className="form-check me-2" />
+                                    <span className="d-none d-md-block">22 : 25</span>
+                                </div>
+                                <div>Blood Test</div>
+                                <div className="d-none d-md-block">Hemas Hospitals</div>
                                 <div className="d-none d-md-block">Dr. Banu</div>
                                 <div >12/06/2003</div>
                                 <div>
@@ -65,9 +97,9 @@ export function MedicalRecords() {
                                     <input type="checkbox" className="form-check me-2" />
                                     <span className="d-none d-md-block">22 : 25</span>
                                 </div>
-                                <div>MRI Scan</div>
-                                <div className="d-none d-md-block">Heymas Hospitals</div>
-                                <div className="d-none d-md-block">Dr. Banu</div>
+                                <div>X-ray</div>
+                                <div className="d-none d-md-block">Asiri Hospitals</div>
+                                <div className="d-none d-md-block">Dr. Poorni</div>
                                 <div >12/06/2003</div>
                                 <div>
                                     <button type="button" className="p-0 border-0 bg-transparent"
@@ -97,7 +129,71 @@ export function MedicalRecords() {
                                     <input type="checkbox" className="form-check me-2" />
                                     <span className="d-none d-md-block">22 : 25</span>
                                 </div>
-                                <div>MRI Scan</div>
+                                <div>ECG</div>
+                                <div className="d-none d-md-block">Nawaloka Hospitals</div>
+                                <div className="d-none d-md-block">Dr. Kushan</div>
+                                <div >12/06/2003</div>
+                                <div>
+                                    <button type="button" className="p-0 border-0 bg-transparent"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse1"
+                                        aria-expanded="false" aria-controls="collapse1">
+                                        <ChevronDown />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="notes px-3 py-2 collapse" id="collapse1">
+                                <h6 className="mt-2">Notes : </h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Dignissimos dicta, cumque deleniti consequatur fugiat asperiores qui
+                                    sit
+                                    animi beatae ab?
+                                    <a href="https://googledrive.com">Download Attachment</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="vtr">
+                            <div className="tr">
+                                <div className="d-flex">
+                                    <input type="checkbox" className="form-check me-2" />
+                                    <span className="d-none d-md-block">22 : 25</span>
+                                </div>
+                                <div>PET Scan</div>
+                                <div className="d-none d-md-block">Durdans Hospitals</div>
+                                <div className="d-none d-md-block">Dr. John</div>
+                                <div >12/06/2003</div>
+                                <div>
+                                    <button type="button" className="p-0 border-0 bg-transparent"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse1"
+                                        aria-expanded="false" aria-controls="collapse1">
+                                        <ChevronDown />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="notes px-3 py-2 collapse" id="collapse1">
+                                <h6 className="mt-2">Notes : </h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Dignissimos dicta, cumque deleniti consequatur fugiat asperiores qui
+                                    sit
+                                    animi beatae ab?
+                                    <a href="https://googledrive.com">Download Attachment</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="vtr">
+                            <div className="tr">
+                                <div className="d-flex">
+                                    <input type="checkbox" className="form-check me-2" />
+                                    <span className="d-none d-md-block">22 : 25</span>
+                                </div>
+                                <div>EEG</div>
                                 <div className="d-none d-md-block">Nawaloka Hospitals</div>
                                 <div className="d-none d-md-block">Dr. Banu</div>
                                 <div >12/06/2003</div>
@@ -129,7 +225,39 @@ export function MedicalRecords() {
                                     <input type="checkbox" className="form-check me-2" />
                                     <span className="d-none d-md-block">22 : 25</span>
                                 </div>
-                                <div>MRI Scan</div>
+                                <div>X-ray</div>
+                                <div className="d-none d-md-block">Nawaloka Hospitals</div>
+                                <div className="d-none d-md-block">Dr. Kushan</div>
+                                <div >12/06/2003</div>
+                                <div>
+                                    <button type="button" className="p-0 border-0 bg-transparent"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse1"
+                                        aria-expanded="false" aria-controls="collapse1">
+                                        <ChevronDown />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="notes px-3 py-2 collapse" id="collapse1">
+                                <h6 className="mt-2">Notes : </h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Dignissimos dicta, cumque deleniti consequatur fugiat asperiores qui
+                                    sit
+                                    animi beatae ab?
+                                    <a href="https://googledrive.com">Download Attachment</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="vtr">
+                            <div className="tr">
+                                <div className="d-flex">
+                                    <input type="checkbox" className="form-check me-2" />
+                                    <span className="d-none d-md-block">22 : 25</span>
+                                </div>
+                                <div>CT Scan</div>
                                 <div className="d-none d-md-block">Hemas Hospitals</div>
                                 <div className="d-none d-md-block">Dr. Banu</div>
                                 <div >12/06/2003</div>
@@ -319,6 +447,7 @@ export function VaccinationDetails() {
     );
 }
 
+
 export function ProfileOverview() {
 
     return (
@@ -326,9 +455,9 @@ export function ProfileOverview() {
             <div className="col-12 col-lg-3">
                 <div className="profile-main section-blur">
                     <div className="profile-image p-4">
-                        <img src={Chiranga} alt="profile" />
+                        <img src={patient} alt="profile" />
                     </div>
-                    <h4 className="title text-center">Chiranga Shalitha</h4>
+                    <h4 className="title text-center">Michael Smith</h4>
 
                     <div className="container-fluid px-0">
 

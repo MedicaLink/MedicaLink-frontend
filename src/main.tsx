@@ -4,15 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import App from './App.tsx'
 import './index.css'
-import Dashboard from './components/dashbaord/Dashboard.tsx'
+// import Dashboard from './components/dashbaord/Dashboard.tsx'
 import DoctorDashboard from './components/dashbaord/DoctorDashboard.tsx'
 import AdminSearchPanel from './components/search/AdminSearchPanel.tsx'
 import NotFound from './NotFound.tsx'
 import AdminPatientPanel from './components/patient/AdminPatientPanel.tsx'
 import WorkingOnIt from './components/WorkingOnIt.tsx'
 import Settings from './components/settings/Settings.tsx'
-import Profile, { MedicalRecords, ProfileOverview, VaccinationDetails } from './components/patient/profile/Profile.tsx'
-import ProfileReports, { MedicalRecordsTable, VaccinationTable } from './components/patient/profile/ProfileReports.tsx'
+import Profile, {MedicalRecords, ProfileOverview, VaccinationDetails } from './components/patient/profile/Profile.tsx'
+import ProfileReports, { MedicalRecordsTable, VaccinationTable, AllergyReactionsTable } from './components/patient/profile/ProfileReports.tsx'
 import { AdminOverview } from './components/admin/AdminOverview.tsx'
 import { PatientRegistrationForm } from './components/patient/PatientRegistrationForm.tsx'
 // import AdminLogIn from './components/login/AdminLogIn.tsx'
@@ -76,9 +76,13 @@ const router = createBrowserRouter([
               {
                 path: 'medicals',
                 element: <MedicalRecordsTable />
+              },
+              {
+                path: 'allergies',
+                element: <AllergyReactionsTable />
               }
             ]
-          }
+          },
         ]
       },
       {

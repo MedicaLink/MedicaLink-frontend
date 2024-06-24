@@ -1,6 +1,6 @@
 import SidebarLink from './SidebarLink';
 import favicon from '../../assets/img/favicon3.png';
-import avatar from '../../assets/img/profie/profile-image.jpg';
+import avatar from '../../assets/img/profie/doctor.jpg';
 import './Sidebar.css';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
