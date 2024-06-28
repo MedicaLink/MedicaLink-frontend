@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import axiosInstance from '../../../axiosInstance';
 import { AlertType, useAlertSnack } from '../../AlertSnack';
 import { UseUser } from '../../auth/UserContext';
+import recordImage from '../../../assets/img/record.png';
 
 interface RecordFormProps {
     record?: MedicalRecord;
@@ -111,7 +112,7 @@ function RecordOverviewForm({ record }: RecordFormProps) {
                 <div className="record">
                     <span className="title">Attachment :</span>
                     <span className="value">
-                        <a href={record?.filePath} target='_blank'>Download report - </a>
+                        <a href={recordImage} target='_blank'>Download report</a>
                     </span>
                 </div>
 
