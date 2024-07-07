@@ -12,9 +12,7 @@ function DoctorDashboard() {
     return (
         <>
     
-            <div className='col-12'>
-                <h2 className='mb-4'>Good morning, Dr. Andrew</h2>
-            </div>
+            
 
             <div className="col-12" id="stats-section">
 
