@@ -5,6 +5,9 @@ import axiosInstance from '../../../axiosInstance';
 import { AlertType, useAlertSnack } from '../../AlertSnack';
 import { UseUser } from '../../auth/UserContext';
 import recordImage from '../../../assets/img/record.png';
+import { Blurhash } from 'react-blurhash';
+import LazyLoad from 'react-lazyload';
+
 
 interface RecordFormProps {
     record?: MedicalRecord;
@@ -38,10 +41,10 @@ export function RecordForm({ record, onRefresh }: RecordFormProps) {
                     ) : (
                         <div className="d-flex mt-3 mt-md-0 edit-btn-container">
                             {
-                                user?.role == "Admin"? (
+                                user?.role == "Admin" ? (
                                     <button className="edit-btn shadow" id="edit-btn" onClick={() => {
                                         setIsEdit(true);
-                                        setFormNode(<RecordEditForm record={record} onRefresh={onRefresh}/>);
+                                        setFormNode(<RecordEditForm record={record} onRefresh={onRefresh} />);
                                     }}>
                                         <span className="me-2">Edit Record</span>
                                         <span className="material-symbols-outlined">
@@ -61,6 +64,7 @@ export function RecordForm({ record, onRefresh }: RecordFormProps) {
 }
 
 function RecordOverviewForm({ record }: RecordFormProps) {
+    const [isRecordLoaded, setIsRecordLoaded] = useState<boolean>(false);
 
     return (
         <div className="row gx-0">
@@ -103,16 +107,21 @@ function RecordOverviewForm({ record }: RecordFormProps) {
                 </div>
             </div>
 
-            <div className="col-12">
+            <div className="py-5 col-12 d-flex flex-wrap justify-content-start">
 
-                {/* <div className='mt-3 border border-1'>
-                        <img src={medicalReport} alt="" className='record-image' />
-                    </div> */}
+                <div className='border border-1 record-image-container'>
+                    <LazyLoad height={500} offset={100} once>
+                        {isRecordLoaded || <Blurhash hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj" width={600} height={500} />}
+                        <img src={recordImage} alt="record-image" 
+                        className={`record-image ${!isRecordLoaded? 'd-none': ''}`} 
+                        />
+                    </LazyLoad>
+                </div>
 
-                <div className="record">
+                <div className="record pt-0 ps-4">
                     <span className="title">Attachment :</span>
                     <span className="value">
-                        <a href={recordImage} target='_blank'>Download report</a>
+                        <a href={recordImage} target='_blank' download>Download report</a>
                     </span>
                 </div>
 
@@ -122,7 +131,7 @@ function RecordOverviewForm({ record }: RecordFormProps) {
     );
 }
 
-interface RForm{
+interface RForm {
     recordType: boolean;
     date: boolean;
 }
@@ -138,7 +147,7 @@ function RecordEditForm({ record, onRefresh }: RecordFormProps) {
     const [rForm, setRForm] = useState<RForm>({
         recordType: false, date: false
     });
-    const {showAlert} = useAlertSnack();
+    const { showAlert } = useAlertSnack();
 
     const validateRecordType = () => {
         if (!recordType) {
@@ -189,23 +198,23 @@ function RecordEditForm({ record, onRefresh }: RecordFormProps) {
         if (file) recordData.append("file", file);
 
         // Make the Update API call
-        try{
-            let response = await axiosInstance.put(`/api/medicalRecord/${record?.id}`,recordData);
+        try {
+            let response = await axiosInstance.put(`/api/medicalRecord/${record?.id}`, recordData);
 
-            if(response.status == 200){
+            if (response.status == 200) {
                 console.log(response.data);
-                showAlert("Success","Vaccination details saved successfully",AlertType.success);
-                if(onRefresh) onRefresh();
+                showAlert("Success", "Vaccination details saved successfully", AlertType.success);
+                if (onRefresh) onRefresh();
             }
-        }catch(error){
+        } catch (error) {
             console.error(error);
-            showAlert("Error","Couldn't save vaccination",AlertType.error);
+            showAlert("Error", "Couldn't save vaccination", AlertType.error);
         }
     }
 
-    useEffect(() => {if(rForm.recordType) validateRecordType()}, [recordType]);
-    useEffect(() => {if(rForm.date) validateDate()}, [date]);
-    useEffect(() => {validateFile()}, [file]);
+    useEffect(() => { if (rForm.recordType) validateRecordType() }, [recordType]);
+    useEffect(() => { if (rForm.date) validateDate() }, [date]);
+    useEffect(() => { validateFile() }, [file]);
 
     return (
         <form className="row g-3 mx-0" onSubmit={onSubmit}>
@@ -264,7 +273,7 @@ function RecordEditForm({ record, onRefresh }: RecordFormProps) {
     )
 }
 
-export function RecordInsertForm({onRefresh}: RecordFormProps) {
+export function RecordInsertForm({ onRefresh }: RecordFormProps) {
     const { patientId } = useParams();
     const [recordType, setRecordType] = useState("");
     const [date, setDate] = useState("");
@@ -276,7 +285,7 @@ export function RecordInsertForm({onRefresh}: RecordFormProps) {
     const [rForm, setRForm] = useState<RForm>({
         recordType: false, date: false
     });
-    const {showAlert} = useAlertSnack();
+    const { showAlert } = useAlertSnack();
 
     const validateRecordType = () => {
         if (!recordType) {
@@ -321,34 +330,34 @@ export function RecordInsertForm({onRefresh}: RecordFormProps) {
         }
 
         const recordData = new FormData();
-        recordData.append("patientId",patientId || '0');
+        recordData.append("patientId", patientId || '0');
         recordData.append("recordType", recordType || "");
         recordData.append("date", date || "");
         recordData.append("description", description);
         //if (file) recordData.append("file", file);
 
         // Make the Insert API call
-        try{
-            let response = await axiosInstance.post("/api/medicalRecord",recordData,{
-                headers : {
+        try {
+            let response = await axiosInstance.post("/api/medicalRecord", recordData, {
+                headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
 
-            if(response.status == 200){
+            if (response.status == 200) {
                 console.log(response.data);
-                showAlert("Success","Vaccination details saved successfully",AlertType.success);
-                if(onRefresh) onRefresh();
+                showAlert("Success", "Vaccination details saved successfully", AlertType.success);
+                if (onRefresh) onRefresh();
             }
-        }catch(error){
+        } catch (error) {
             console.error(error);
-            showAlert("Error","Couldn't save vaccination",AlertType.error);
+            showAlert("Error", "Couldn't save vaccination", AlertType.error);
         }
     };
 
-    useEffect(() => {if(rForm.recordType) validateRecordType()}, [recordType]);
-    useEffect(() => {if(rForm.date) validateDate()}, [date]);
-    useEffect(() => {validateFile()}, [file]);
+    useEffect(() => { if (rForm.recordType) validateRecordType() }, [recordType]);
+    useEffect(() => { if (rForm.date) validateDate() }, [date]);
+    useEffect(() => { validateFile() }, [file]);
 
     return (
         <>

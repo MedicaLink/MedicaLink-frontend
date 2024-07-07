@@ -109,7 +109,7 @@ function AdminForm({ changeForm }: FormProps) {
     if(!(ue && up)) return;
 
     try {
-      let response = await axiosInstance.post("/api/Login", {
+      let response = await axiosInstance.post("/api/login", {
         userName: email,
         password
       });

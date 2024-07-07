@@ -11,5 +11,7 @@ export interface Hospital{
 
     branch: string;
 
+    logoImage: string;
+
     admins: Admin[]
 }
