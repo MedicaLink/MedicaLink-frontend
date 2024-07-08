@@ -9,7 +9,7 @@ import AdminPatientPanel from './components/patient/AdminPatientPanel.tsx'
 import WorkingOnIt from './components/WorkingOnIt.tsx'
 import Settings from './components/settings/Settings.tsx'
 import Profile, { MedicalRecords, ProfileOverview, VaccinationDetails } from './components/patient/profile/Profile.tsx'
-import ProfileReports, { MedicalRecordsTable, VaccinationTable } from './components/patient/profile/ProfileReports.tsx'
+import ProfileReports, { AllergyReactionsTable, MedicalRecordsTable, VaccinationTable } from './components/patient/profile/ProfileReports.tsx'
 import { AdminOverview } from './components/admin/AdminOverview.tsx'
 import { PatientEditForm, PatientRegistrationForm } from './components/patient/PatientRegistrationForm.tsx'
 import { UseUser } from './components/auth/UserContext.tsx'
@@ -18,6 +18,7 @@ import AlertSnack, { AlertSnackProvider } from './components/AlertSnack.tsx'
 import DoctorDashboard from './components/dashbaord/DoctorDashboard.tsx'
 import isLoggedIn from './components/auth/CheckUser.tsx';
 import Logout from './components/login/Logout.tsx';
+import PatientDashboard from './components/dashbaord/PatientDashboard.tsx';
 
 function App() {
   let { user, setUser } = UseUser();
@@ -48,7 +49,7 @@ function App() {
       children: [
         {
           path: '/',
-          element: user?.role == 'Admin' ? <AdminDashboard /> : (user?.role == "Doctor" ? <DoctorDashboard /> : <ProfileOverview />),
+          element: user?.role == 'Admin' ? <AdminDashboard /> : (user?.role == "Doctor" ? <DoctorDashboard /> : <PatientDashboard />),
           children: user?.role == 'User' ? [
             {
               index: true,
@@ -127,6 +128,10 @@ function App() {
                 {
                   path: 'medicals',
                   element: <MedicalRecordsTable />
+                },
+                {
+                  path: 'allergies',
+                  element: <AllergyReactionsTable />
                 }
               ]
             }
