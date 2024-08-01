@@ -11,11 +11,16 @@
     --profile-head-secondary:#3a5fb594;
     --profile-primary: #0b7bbe;
     --backdrop-blur: 5px;
-    --background-color: #f6f6f6;
+    /* --background-color: #fcfbfe; */
+    --background-color:#f6f6f6;
     --profile-secondary: #14967f;
 }
 
 *{
   font-family: var(--font-secondary);
   font-size: var(--font-normal);
+}
+
+a {
+  text-decoration: none;
 }

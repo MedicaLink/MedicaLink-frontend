@@ -40,11 +40,11 @@
 }
 
 .stat-container .stat .percentage.good{
-    color: green;
+    color: #008000;
 }
 
 .stat-container .stat .percentage.bad{
-    color: rgb(170, 0, 0);
+    color: #aa0000;
 }
 
 .stat-container .stat .icon{
@@ -64,10 +64,22 @@
 .patients-container{
     padding: 20px 25px;
     border-radius: 10px;
+    
+}
+
+.patients-container .patient-list{
+    max-height: 320px;
+    overflow-y: auto;
 }
 
 .patients-container .patient-list table tr > *{
     background-color: transparent;
+}
+
+.patients-container .patient-list table thead{
+    position: sticky;
+    top: 0%;
+    background-color: rgba(255, 255, 255, 0.899);
 }
 
 .patient-list table tr td .patient{
@@ -103,7 +115,7 @@
 }
 
 .comment-list{
-    max-height: 258px;
+    max-height: 320px;
     overflow-y: auto;
 }
 
@@ -170,6 +182,10 @@
     border-radius: 10px;
 }
 
+.update-container .update-list{
+    overflow-x: auto;
+}
+
 .update-container .update-list table tr > *{
     background-color: transparent;
 }
@@ -197,8 +213,8 @@
 
 @media (max-width:576px){
 
-    .update-container .update-list{
-        overflow-x: auto;
+    .comment-list .comment p{
+        max-width: 150px;
     }
 
     .update-container table tr td .update-description{

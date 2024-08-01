@@ -1,0 +1,99 @@
+/* Popup Section Start */
+#pop-up-container{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100vh;
+    background-color: #0000003f;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+#pop-up{
+    position: fixed;
+    top: 10%;
+    width: 100%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: #fff;
+    padding: 60px 50px 0px 50px;
+    z-index: 50;
+}
+
+#pop-up .close-btn{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+#pop-up .close-btn span{
+    font-size: 30px;
+}
+
+#pop-up .content{
+    overflow-y: auto;
+    max-height: calc(100% - 80px);
+}
+
+#pop-up .content .edit-btn,#pop-up .content .cancel-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+#pop-up .content .edit-btn{
+    background-color: var(--profile-primary);
+}
+
+#pop-up .content .cancel-btn{
+    background-color: #737373;
+}
+
+#pop-up .content .edit-btn-container, #pop-up .content .cancel-btn-container{
+    position: sticky;
+    top: 20px;
+}
+
+#pop-up .content .record{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+#pop-up .content .record .title{
+    font-size: 18px;
+    font-weight: 550;
+}
+
+/* tablet styles */
+@media (max-width:768px){
+    #pop-up{
+        padding: 60px 50px 0px 50px;
+    }
+}
+
+/* mobile styles */
+@media (max-width:576px){
+    #pop-up{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 30px 22px 0px 22px;
+    }
+
+    #pop-up .close-btn{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+    }
+}
+
+/* Popup Section End */

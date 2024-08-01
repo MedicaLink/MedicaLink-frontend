@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Collapse } from 'react-bootstrap';
 import { Search, UiChecksGrid } from 'react-bootstrap-icons';
 import './Searchbar.css';
@@ -7,22 +7,25 @@ interface BaseProps {
     children?: React.ReactNode,
     className?: string,
     value? : string,
-    name? : string
+    name? : string,
 }
 
 interface FilterCategoryProps extends BaseProps{
-    checked? : boolean
+    checked? : boolean,
+    checkedValue? : string,
+    onChange? : (e : React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function FilterCategory({className, children, name,  value = '', checked}: FilterCategoryProps) {
+export function FilterCategory({className, children, name,  value = '', checked, onChange}: FilterCategoryProps) {
 
     return (
         <li className="category">
             <input type="radio" 
-            id={`radio-${name}-${value}`} 
+            id={`radio-${name}-${value}`}
             name={name} value={value} 
-            className={`radio ${className}`} 
-            defaultChecked={checked}/>
+            className={`radio ${className}`}
+            defaultChecked={checked}
+            onChange={onChange}/>
 
             <label htmlFor={`radio-${name}-${value}`}>{children}</label>
         </li>
@@ -66,22 +69,34 @@ export function SearchFilter({ children }: BaseProps) {
 
 interface SearchbarProps {
     className?: string,
+    value? : string;
     children?: React.ReactElement
+    onChange? : (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onSearch? : () => void;
 }
 
-function Searchbar({ className, children }: SearchbarProps) {
+function Searchbar({ className, children, value, onChange, onSearch }: SearchbarProps) {
 
     const [open, setOpen] = useState(false);
+    useEffect(() => { if(onSearch) {
+        console.log("Working In searchbar");
+        onSearch();
+    } }, [value])
 
     return (
         <div id="search-controls-section" className={`py-2 px-3 section-blur ${className}`}>
 
             <div className="search-controls d-flex align-items-center">
-                <button className="fs-5">
+                <button className="fs-5" /* onClick={onSearch} */>
                     <Search color='black' size={18} />
                 </button>
 
-                <input type="text" className="search-bar" placeholder="Search for patients..." />
+                <input type="text" className="search-bar" placeholder="Search for patients..." value={value} onChange={onChange}
+                onKeyDown={(e) => {
+                    if(e.key == 'Enter' && onSearch){
+                        onSearch();
+                    }
+                }}/>
                 <div className="vr mx-2"></div>
                 <button className="fs-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="search-filter"
                     onClick={() => setOpen(!open)}>

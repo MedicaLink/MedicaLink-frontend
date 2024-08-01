@@ -38,9 +38,9 @@ function Stats({className} :StatProps) {
 
             <div className="stat section-blur">
                 <div className="me-5">
-                    <h6>Total Number of Patients</h6>
+                    <h6>Number of Records</h6>
 
-                    <h4>3452 <span className="percentage good">+20%</span></h4>
+                    <h4>14504 <span className="percentage good">+5%</span></h4>
                 </div>
 
                 <div className="icon">

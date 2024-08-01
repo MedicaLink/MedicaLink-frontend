@@ -1,6 +1,8 @@
 .patient-list{
     display: flex;
     flex-direction: column;
+    max-height: 505px;
+    overflow-y: auto;
 }
 
 .patient-list .patient{
@@ -38,7 +40,7 @@
     margin-left: auto;
 }
 
-.patient-list .patient .controls button{
+.patient-list .patient .controls button, .patient-list .patient .controls a{
     border: none;
     border-radius: 5px;
     padding: 8px;
@@ -76,6 +78,10 @@
         margin-left: 20px;
     }
 
+    .patient-list .patient .info .MuiSkeleton-text{
+        width: 160px !important;
+    }
+
     .patient-list .patient .info.temp{
         display: none;
     }
@@ -87,4 +93,11 @@
     .patient-list .patient .view-btn{
         margin-left: 10px;
     }
+}
+
+/* For result highlighting */
+span.result-highlight{
+    background-color: rgba(109, 109, 210, 0.563);
+    color: white;
+    font-size: inherit;
 }

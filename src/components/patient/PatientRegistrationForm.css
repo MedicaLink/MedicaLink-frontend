@@ -1,0 +1,44 @@
+/* ==== Patient Form Start ==== */
+
+#patient-form{
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+#patient-form .patient-form h6{
+    background-color: #157dd8db;
+    padding: 10px 10px;
+    color: #fff;
+}
+
+#patient-form .patient-form .controls{
+    display: flex;
+    align-items: center;
+}
+
+#patient-form .patient-form .controls button{
+    border: none;
+    border-radius: 6px;
+    padding: 6px 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+#register-btn{
+    background-color: var(--profile-primary);
+}
+
+#cancel-btn{
+    background-color: #435a88;
+}
+
+.success-alert{
+    background-color: rgba(64, 212, 150, 0.273) !important;
+}
+
+.error-alert{
+    background-color: rgba(212, 64, 64, 0.273) !important;
+}
+
+/* ==== Patient Form End ==== */

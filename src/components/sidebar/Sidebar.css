@@ -99,6 +99,7 @@
     text-decoration: none;
     font-size: 25px;
     line-height: 24px;
+    user-select: none;
 }
 
 .sidebar-list-item a span{
@@ -107,12 +108,12 @@
 
 .sidebar-list-item:hover a{
     color: var(--color-active);
-    background-color: #000ecc20;
+    background-color: #0b7cbe25;
 }
 
 .sidebar-list-item a.active {
     color: var(--color-active);
-    background-color: #000ecc34;
+    background-color: #0b7cbe30;
 }
 
 .sidebar-list-item:has(a.active)::before {
@@ -167,7 +168,6 @@
 
 .account-info-picture {
     width: 50px;
-    border-radius: 10px;
     border: none;
     background-color: transparent;
     padding: 0px;
@@ -179,4 +179,5 @@
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+    border-radius: 15px;
 }

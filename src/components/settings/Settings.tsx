@@ -1,7 +1,9 @@
 import './Settings.css';
 import { Search } from 'react-bootstrap-icons';
+import { UseUser } from '../auth/UserContext';
 
 function Settings() {
+    const { user } = UseUser();
 
     return (
         <>
@@ -62,56 +64,99 @@ function Settings() {
 
                             <div className="billing-plans">
 
-                                <div className="plan">
+                                {
+                                    user?.role === 'admin' ? (
+                                        <>
+                                            <div className="plan">
 
-                                    <div>
-                                        <h6>Basic <span className="active ms-3"> <div></div> active</span></h6>
+                                                <div>
+                                                    <h6>Basic <span className="active ms-3"> <div></div> active</span></h6>
 
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Odit fugiat asperiores beatae earum, sit ipsam.
-                                        </p>
-                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Odit fugiat asperiores beatae earum, sit ipsam.
+                                                    </p>
+                                                </div>
 
-                                    <div className="icon green">
-                                        <span className="material-symbols-outlined">
-                                            star
-                                        </span>
-                                    </div>
-                                </div>
+                                                <div className="icon green">
+                                                    <span className="material-symbols-outlined">
+                                                        star
+                                                    </span>
+                                                </div>
+                                            </div>
 
-                                <div className="plan">
+                                            <div className="plan">
 
-                                    <div>
-                                        <h6>Advanced</h6>
+                                                <div>
+                                                    <h6>Advanced</h6>
 
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Odit fugiat asperiores beatae earum, sit ipsam.
-                                        </p>
-                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Odit fugiat asperiores beatae earum, sit ipsam.
+                                                    </p>
+                                                </div>
 
-                                    <div className="icon red">
-                                        <span className="material-symbols-outlined">
-                                            star_half
-                                        </span>
-                                    </div>
-                                </div>
+                                                <div className="icon red">
+                                                    <span className="material-symbols-outlined">
+                                                        star_half
+                                                    </span>
+                                                </div>
+                                            </div>
 
-                                <div className="plan">
+                                            <div className="plan">
 
-                                    <div>
-                                        <h6>Premium</h6>
+                                                <div>
+                                                    <h6>Premium</h6>
 
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Odit fugiat asperiores beatae earum, sit ipsam.
-                                        </p>
-                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Odit fugiat asperiores beatae earum, sit ipsam.
+                                                    </p>
+                                                </div>
 
-                                    <div className="icon blue">
-                                        <span className="material-symbols-outlined">
-                                            stars
-                                        </span>
-                                    </div>
-                                </div>
+                                                <div className="icon blue">
+                                                    <span className="material-symbols-outlined">
+                                                        stars
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="plan">
+
+                                                <div>
+                                                    <h6>Basic <span className="active ms-3"> <div></div> active</span></h6>
+
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Odit fugiat asperiores beatae earum, sit ipsam.
+                                                    </p>
+                                                </div>
+
+                                                <div className="icon green">
+                                                    <span className="material-symbols-outlined">
+                                                        star
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div className="plan">
+
+                                                <div>
+                                                    <h6>Premium</h6>
+
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Odit fugiat asperiores beatae earum, sit ipsam.
+                                                    </p>
+                                                </div>
+
+                                                <div className="icon blue">
+                                                    <span className="material-symbols-outlined">
+                                                        stars
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+
+                                }
 
                             </div>
 

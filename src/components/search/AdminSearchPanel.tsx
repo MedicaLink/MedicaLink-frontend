@@ -1,27 +1,51 @@
 import './AdminSearchPanel.css';
-import SearchResult, { SearchType } from './SearchResult';
+import SearchResult, { SearchType, SearchResultSkeleton } from './SearchResult';
 import Searchbar, { FilterCategory, FilterGroup, FilterList, FilterTitle, SearchFilter } from './Searchbar';
+import { useAlertSnack, AlertType } from '../AlertSnack';
+import React, { useState, useEffect } from 'react';
+import { Patient } from '../../models/Patient';
+import axiosInstance from '../../axiosInstance';
 
 function AdminSearchPanel() {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [searchType, setSearchType] = useState("Nic");
+    const [registrationType, setRegistrationType] = useState("all");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [patientList, setPatientList] = useState<Patient[]>([]);
+    const { showAlert } = useAlertSnack();
+    let searchDebounce :NodeJS.Timeout = null;
 
-    const patientList = [
-        {
-            id:1, referenceNo: '200331020128', name: 'Jane Cooper', registeredHospital: 'Hemas pvt ltd',
-            registeredDate: '20/05/2022', lastUpdated: '10/05/2024', firstUpdated: '20/05/2022'
-        },
-        {
-            id:2, referenceNo: '200331020128', name: 'Jane Cooper', registeredHospital: 'Hemas pvt ltd',
-            registeredDate: '20/05/2022', lastUpdated: '10/05/2024', firstUpdated: '20/05/2022'
-        },
-        {
-            id:3, referenceNo: '200331020128', name: 'Jane Cooper', registeredHospital: 'Hemas pvt ltd',
-            registeredDate: '20/05/2022', lastUpdated: '10/05/2024', firstUpdated: '20/05/2022'
-        },
-        {
-            id:4, referenceNo: '200331020128', name: 'Jane Cooper', registeredHospital: 'Hemas pvt ltd',
-            registeredDate: '20/05/2022', lastUpdated: '10/05/2024', firstUpdated: '20/05/2022'
+    const handleSearchTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchType(e.target.value);
+    };
+
+    const handleRegistrationType = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setRegistrationType(e.target.value);
+    };
+
+    const searchPatients = async () => {
+        try {
+            let response = await axiosInstance.get(`/api/patient/search?query=${searchQuery}&type=${searchType}`);
+
+            console.log(response.data);
+            console.log(searchQuery, searchType);
+            setPatientList(response.data);
+            setIsLoading(false);
         }
-    ];
+        catch (error) {
+            console.log(error);
+            showAlert("Error", "Something went wrong", AlertType.error);
+        }
+    }
+
+    const onSearch = async () => {
+        if (!isLoading) setIsLoading(true);
+
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(async () => {
+            await searchPatients();
+        }, 800);
+    }
 
     return (
         <>
@@ -31,7 +55,8 @@ function AdminSearchPanel() {
 
             <div className="col-12">
 
-                <Searchbar className='mb-4'>
+                <Searchbar className='mb-4' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+                    onSearch={onSearch}>
 
                     <SearchFilter>
 
@@ -39,9 +64,9 @@ function AdminSearchPanel() {
 
                             <FilterTitle>Select search type</FilterTitle>
                             <FilterList>
-                                <FilterCategory key={1} name='type' value='nic' checked={true}># Reference Number</FilterCategory>
-                                <FilterCategory key={2} name='type' value='name'># Patient Name</FilterCategory>
-                                <FilterCategory key={3} name='type' value='hospital'># Registered Hospital</FilterCategory>
+                                <FilterCategory key={1} name='type' value='Nic' checked={true} onChange={handleSearchTypeChange}># Reference Number</FilterCategory>
+                                <FilterCategory key={2} name='type' value='Name' onChange={handleSearchTypeChange}># Patient Name</FilterCategory>
+                                <FilterCategory key={3} name='type' value='Hospital' onChange={handleSearchTypeChange}># Registered Hospital</FilterCategory>
                             </FilterList>
 
                         </FilterGroup>
@@ -50,9 +75,9 @@ function AdminSearchPanel() {
 
                             <FilterTitle>Select registration type</FilterTitle>
                             <FilterList>
-                                <FilterCategory key={1} name='reg_type' value='your'># Your Hospital</FilterCategory>
-                                <FilterCategory key={2} name='reg_type' value='associated'># Associated With</FilterCategory>
-                                <FilterCategory key={3} name='reg_type' value='all' checked={true}># All</FilterCategory>
+                                <FilterCategory key={1} name='reg_type' value='your' onChange={handleRegistrationType}># Your Hospital</FilterCategory>
+                                <FilterCategory key={2} name='reg_type' value='associated' onChange={handleRegistrationType}># Associated With</FilterCategory>
+                                <FilterCategory key={3} name='reg_type' value='all' checked={true} onChange={handleRegistrationType}># All</FilterCategory>
                             </FilterList>
 
                         </FilterGroup>
@@ -90,13 +115,25 @@ function AdminSearchPanel() {
                     <div className="patient-list">
 
                         {
-                            patientList.map(patient => {
-                                return (
-                                    <SearchResult key={patient.id} referenceNo={patient.referenceNo} name={patient.name} registeredHospital={patient.registeredHospital}
-                                        registeredDate={patient.registeredDate} lastUpdated={patient.lastUpdated} firstUpdated={patient.firstUpdated}
-                                        searchType={SearchType.VIEW}></SearchResult>
-                                );
-                            })
+                            isLoading ? (
+                                Array.from({ length: 5 }).map((item, index) => {
+                                    return (
+                                        <SearchResultSkeleton key={index} searchType={SearchType.VIEW}/>
+                                    );
+                                })
+                            ) : (
+                                patientList.length < 1? (
+                                    <div className="text-center my-5">No patients found</div>
+                                ) : (
+                                    patientList.map(patient => {
+                                        return (
+                                            <SearchResult key={patient.id} id={patient.id} referenceNo={patient.nic} name={patient.name} registeredHospital={patient.admin.hospital?.name || ""}
+                                                registeredDate={patient.registeredDate} lastUpdated={patient.registeredDate} firstUpdated={patient.registeredDate} imagePath={patient.profileImage}
+                                                searchType={SearchType.VIEW} searchOptions={{query:searchQuery, searchType}}></SearchResult>
+                                        );
+                                    })
+                                )
+                            )
                         }
 
                     </div>
