@@ -10,9 +10,9 @@ export default function UpdatedList({ className }: UpdatedListProps) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const patientList = [
-        { id: 1, profile: patientImage, referenceNo: '200331015154', name: 'Chathusha Mendis', date: '22/10/2024', updatedBy: 'Dr. Suresh' },
-        { id: 2, profile: patientImage, referenceNo: '200331012273', name: 'Nisala Dulanaka', date: '22/10/2024', updatedBy: 'Dr. Suresh' },
-        { id: 3, profile: patientImage, referenceNo: '200331015154', name: 'Nishadi Silva', date: '22/10/2024', updatedBy: 'Dr. Suresh' }
+        { id: 1, profile: 'public/profile/p9.jpg', referenceNo: '200331015154', name: 'Chathusha Mendis', date: '22/10/2024', updatedBy: 'Dr. Suresh' },
+        { id: 2, profile: 'public/profile/p7.jpg', referenceNo: '200331012273', name: 'Nisala Dulanaka', date: '22/10/2024', updatedBy: 'Dr. Suresh' },
+        { id: 3, profile: 'public/profile/p10.webp', referenceNo: '200331015154', name: 'Nishadi Silva', date: '22/10/2024', updatedBy: 'Dr. Suresh' }
     ]
 
     return (

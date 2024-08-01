@@ -4,6 +4,7 @@ export interface User{
     userId : number,
     userName : string,
     role : string,
+    name: string
 }
 
 interface UserContextType {

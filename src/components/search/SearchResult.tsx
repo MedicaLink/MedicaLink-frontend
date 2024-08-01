@@ -30,6 +30,8 @@ interface SearchResultProps extends BaseSearchResultsProps{
 
 function SearchResult({ searchOptions, id, searchType, referenceNo, name, registeredHospital, registeredDate, lastUpdated, firstUpdated, imagePath }: SearchResultProps) {
 
+    //const imageFile = 
+
     return (
         <div className="patient">
 

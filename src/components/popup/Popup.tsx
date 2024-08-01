@@ -33,7 +33,7 @@ export function PopupProvider({children} : PopupProviderProps){
         <popupContext.Provider value={{isOpen, content, openPopup, closePopup}}>
             {children}
         </popupContext.Provider>
-    )
+    );
 }
 
 export function usePopup() : PopupContextProps {

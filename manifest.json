@@ -1,0 +1,20 @@
+{
+  "short_name": "Medicalink",
+  "name": "Medicalink Online EHR System",
+  "icons": [
+    {
+      "src": "src/assets/img/favicon.png",
+      "type": "image/png",
+      "sizes": "50x58"
+    },
+    {
+      "src": "src/assets/img/favicon3.png",
+      "type": "image/png",
+      "sizes": "1143x1234"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -12,6 +12,7 @@ function isLoggedIn(): null | User {
     let token = Cookies.get("jwtToken");
     let uId = Cookies.get("userId");
     let uName = Cookies.get("userName");
+    let name = Cookies.get("name");
     let uRole = Cookies.get("role");
 
     if (token && uId && uName && uRole) {
@@ -20,6 +21,7 @@ function isLoggedIn(): null | User {
         const user = {
             userName: uName,
             userId: parseInt(uId),
+            name: name,
             role: uRole
         };
 

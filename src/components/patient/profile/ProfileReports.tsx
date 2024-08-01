@@ -449,14 +449,13 @@ function ProfileReports() {
     const [reportType, setReportType] = useState<string>("Vaccination");
     const [vaccinations, setVaccinations] = useState<Vaccination[]>([]);
     const [medicalRecords, setMedicalRecords] = useState<MedicalRecord[]>([]);
+    let searchDebounce: NodeJS.Timeout = null;
 
     const handleSearchTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchType(e.target.value);
     }
 
     const onSearch = async () => {
-        if (!isLoading) setIsLoading(true);
-
         try {
             if (reportType == "Vaccination") {
                 let response = await axiosInstance.get(`/api/vaccinations/search?patientId=${patientId}&query=${searchQuery}&type=${searchType}`);
@@ -477,17 +476,14 @@ function ProfileReports() {
         }
     };
 
-    /* useEffect(() => {
-        const fetchData = async () => {
+    useEffect(() => {
+        if (!isLoading) setIsLoading(true);
+        clearTimeout(searchDebounce);
+        
+        searchDebounce = setTimeout(async () => {
             await onSearch();
-        };
-
-        fetchData();
-
-        return () => { };
-    }, [reportType]); */
-
-    useEffect(() => { onSearch() }, [searchQuery, reportType]);
+        }, 800);
+    }, [searchQuery, reportType]);
 
     return (
         <>

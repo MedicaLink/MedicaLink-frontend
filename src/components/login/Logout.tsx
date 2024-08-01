@@ -10,6 +10,7 @@ function Logout() {
         Cookies.remove('jwtToken');
         Cookies.remove('userId');
         Cookies.remove('userName');
+        Cookies.remove('name');
         Cookies.remove('role');
 
         user = null;

@@ -122,6 +122,7 @@ function AdminForm({ changeForm }: FormProps) {
         Cookies.set('jwtToken', token, { expires: expirationDate });
         Cookies.set('userId', response.data.userId, { expires: expirationDate });
         Cookies.set('userName', response.data.userName, { expires: expirationDate });
+        Cookies.set('name', response.data.name, { expires: expirationDate });
         Cookies.set('role', response.data.role, { expires: expirationDate });
 
         // Set the token in Axios defaults
