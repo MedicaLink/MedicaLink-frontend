@@ -13,6 +13,7 @@ function AdminSearchPanel() {
     const [searchQuery, setSearchQuery] = useState("");
     const [patientList, setPatientList] = useState<Patient[]>([]);
     const { showAlert } = useAlertSnack();
+    let searchDebounce :NodeJS.Timeout = null;
 
     const handleSearchTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchType(e.target.value);
@@ -40,18 +41,11 @@ function AdminSearchPanel() {
     const onSearch = async () => {
         if (!isLoading) setIsLoading(true);
 
-        await searchPatients();
-    }
-
-    /* useEffect(() => {
-        const fetchData = async () => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(async () => {
             await searchPatients();
-        }
-
-        fetchData();
-
-        return () => { }
-    }, []); */
+        }, 800);
+    }
 
     return (
         <>

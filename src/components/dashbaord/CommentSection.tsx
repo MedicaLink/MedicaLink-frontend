@@ -10,9 +10,9 @@ export default function CommentSection({ className }: CommentSectionProps) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const comments = [
-        { id: 1, comment: 'The staff at this hospital were incredibly kind and attentive. I felt well cared for during my stay.', date: '10/12/2022 10:05', img: patientImage},
-        { id: 2, comment: 'My doctor took the time to explain my condition and treatment options thoroughly. Very satisfied with the service!', date: '10/12/2022 10:05', img: patientImage},
-        { id: 3, comment: 'The nursing staff were exceptional and made my recovery process much smoother. Thank you!', date: '10/12/2022 10:05', img: patientImage}
+        { id: 1, comment: 'The staff at this hospital were incredibly kind and attentive. I felt well cared for during my stay.', date: '10/12/2022 10:05', img: 'public/profile/p8.jpg'},
+        { id: 2, comment: 'My doctor took the time to explain my condition and treatment options thoroughly. Very satisfied with the service!', date: '10/12/2022 10:05', img: 'public/profile/p5.jpg'},
+        { id: 3, comment: 'The nursing staff were exceptional and made my recovery process much smoother. Thank you!', date: '10/12/2022 10:05', img: 'public/profile/p4.jpg'}
     ]
 
     return (

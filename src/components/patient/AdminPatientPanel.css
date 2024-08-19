@@ -1,11 +1,11 @@
 /* ==== Search Result Section Start */
 
-#search-result-section{
+#search-result-section {
     padding: 20px 25px;
     border-radius: 10px;
 }
 
-.add-btn{
+.add-btn {
     border: none;
     border-radius: 5px;
     background-color: var(--profile-primary);
@@ -19,23 +19,23 @@
 
 /* ==== Patient Form Start ==== */
 
-#patient-form{
+#patient-form {
     padding: 20px 30px;
     border-radius: 10px;
 }
 
-#patient-form .patient-form h6{
+#patient-form .patient-form h6 {
     background-color: var(--profile-primary);
     padding: 10px 10px;
     color: #fff;
 }
 
-#patient-form .patient-form .controls{
+#patient-form .patient-form .controls {
     display: flex;
     align-items: center;
 }
 
-#patient-form .patient-form .controls button{
+#patient-form .patient-form .controls button {
     border: none;
     border-radius: 6px;
     padding: 6px 15px;
@@ -44,11 +44,11 @@
     align-items: center;
 }
 
-#register-btn{
+#register-btn {
     background-color: var(--profile-primary);
 }
 
-#cancel-btn{
+#cancel-btn {
     background-color: #435a88;
 }
 

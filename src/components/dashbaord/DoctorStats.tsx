@@ -5,7 +5,7 @@ interface StatProps {
 function Stats({ className }: StatProps) {
   return (
     <div className={`stat-container ${className}`} id="docotor-stats">
-      
+
       <div className="stat section-blur d-flex align-items-center">
         <div className="icon me-2">
           <span className="material-symbols-outlined">task_alt</span>
@@ -45,7 +45,7 @@ function Stats({ className }: StatProps) {
           <h6>Rating</h6>
         </div>
       </div>
-      
+
     </div>
   );
 }

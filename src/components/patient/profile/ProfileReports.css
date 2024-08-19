@@ -102,7 +102,7 @@
     position: sticky;
     top: 0%;
     background-color: #fff;
-    z-index: 2;
+    z-index: 5;
 }
 
 #record-data-container .table-container table td, #record-data-container .table-container table th{
@@ -127,6 +127,38 @@
     justify-content: center;
 }
 
+/* Hospital location start */
+.location-td{
+    cursor: pointer;
+}
+
+.location-td .location{
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.location-td .location img{
+    max-width: 100%;
+}
+
+.location-td .hospital-hover{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 50px;
+    background-color: #fefefe;
+    max-width: 250px;
+    min-height: 100px;
+    z-index: 2;
+}
+
+.location-td:hover .hospital-hover{
+    display: block;
+}
+/* Hospital location end */
+
 #record-data-container .table-container table tbody tr.editable::after{
     content: '';
     position: absolute;
@@ -150,7 +182,7 @@
 }
 
 #record-data-container .table-container table tbody tr{
-    z-index: 1;
+    /* z-index: 0; */
     position: relative;
     border-radius: 50px;
 }
@@ -182,8 +214,13 @@
     }
 }
 
+.record-image-container{
+    width: fit-content !important;
+}
+
 .record-image{
-    width: 30%;
+    max-width: 100%;
+    max-height: 500px;
 }
 
 /* ==== Result Navigation Section Start ==== */
